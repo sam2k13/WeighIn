@@ -1,0 +1,17 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Your question" ng-model="newQuestion.text">
+          </label>
+		  <label class="item item-input">
+              <input type="text" placeholder="Choice" ng-model="newQuestion.choice1">
+          </label>
+		  <label class="item item-input">
+              <input type="text" placeholder="Other Choice" ng-model="newQuestion.choice2">
+          </label>
+		  <button class="button button-block button-calm" ng-click="addQuestion()">Submit</button>
+      </div>
+      
+  </ion-content>
+</ion-view>

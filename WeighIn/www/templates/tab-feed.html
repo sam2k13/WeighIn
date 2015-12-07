@@ -1,0 +1,22 @@
+<ion-view view-title="Feed">
+  <ion-content class="padding">
+			
+		<div>
+			<ion-spinner ng-show="!questionLoaded" class="spinner-energized"></ion-spinner>
+			<div ng-show="questionLoaded">
+				<h2 ng-show="currentQuestionAvailable">{{currentQuestion.question}}</h2>
+				<ion-radio ng-show="currentQuestionAvailable" ng-disabled="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2" ng-model="currentQuestion.votes[authInfo].choice" name="{{currentQuestion.$id}}" ng-change="choiceMade(currentQuestion)" ng-value="1">{{currentQuestion.choice1}} <div ng-show="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2">{{currentQuestion.choice1Votes / (currentQuestion.choice2Votes + currentQuestion.choice1Votes) * 100}}%</div></ion-radio>
+				<ion-radio ng-show="currentQuestionAvailable" ng-disabled="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2" ng-model="currentQuestion.votes[authInfo].choice" name="{{currentQuestion.$id}}"  ng-change="choiceMade(currentQuestion)" ng-value="2">{{currentQuestion.choice2}} <div ng-show="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2">{{currentQuestion.choice2Votes / (currentQuestion.choice2Votes + currentQuestion.choice1Votes) * 100}}%</div></ion-radio>				
+				<button ng-show="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2" class="button button-assertive" ng-click="nextQuestion()" style="float: right;">Next Question</button>
+				<button ng-show="currentQuestion.votes[authInfo].choice == 1 || currentQuestion.votes[authInfo].choice == 2" class="button" style="float: right;">Details</button>
+				
+				<h1 ng-show="!currentQuestionAvailable">Sorry!</h1>
+				<p ng-show="!currentQuestionAvailable">It seems there are no questions currently available. Go to the contribute tab to add more questions or approve questions!</h1>
+				<button ng-show="!currentQuestionAvailable" class="button" ng-click="nextQuestion()" style="float: right;">Refresh</button>
+		
+			
+			<div>	
+		</div>			
+  </ion-content>
+  
+</ion-view>
